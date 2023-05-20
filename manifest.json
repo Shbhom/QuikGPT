@@ -2,7 +2,13 @@
   "manifest_version": 2,
   "name": "QuikGPT",
   "version": "1.0",
-  "permissions": ["contextMenus", "storage", "notifications", "activeTab"],
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "notifications",
+    "activeTab",
+    "menus"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
