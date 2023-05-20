@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "QuikGPT",
+  "version": "1.0",
+  "permissions": ["contextMenus", "storage", "notifications", "activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "options_page": "config.html",
+  "chrome_url_overrides": {
+    "newtab": "QuikGPT.html"
+  }
+}
