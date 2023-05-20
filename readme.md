@@ -1,6 +1,6 @@
 # QuikGPT Extension
 
-💨🚀 Boost Your Productivity with QuikGPT! Lightning-Fast AI Assistance ⚡💡
+💨🚀 Boost Your Productivity with QuikGPT!, makes you BLAZINGLY FAST ⚡💡
 
 QuikGPT revolutionizes the way you harness the power of AI to supercharge your productivity. No longer do you need to open a separate website or application to access the incredible capabilities of ChatGPT. With QuikGPT, you can simply write anywhere you want and unleash the lightning-fast magic of AI with just a right-click! ⚡🔥
 
