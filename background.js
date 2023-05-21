@@ -1,5 +1,10 @@
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.tabs.create({ url: "config.html" });
+chrome.runtime.onInstalled.addListener(function (details) {
+  chrome.storage.local.get("installed", function (result) {
+    if (!result.installed) {
+      chrome.storage.local.set({ installed: true });
+      chrome.tabs.create({ url: "config.html" });
+    }
+  });
 });
 
 chrome.contextMenus.create({
@@ -8,14 +13,20 @@ chrome.contextMenus.create({
   contexts: ["selection"],
 });
 
-chrome.contextMenus.onClicked.addListener(function (info) {
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "searchWithGPT") {
     const query = info.selectionText;
-    chrome.tabs.create({
-      url:
-        chrome.extension.getURL("QuikGPT.html") +
-        "?query=" +
-        encodeURIComponent(query),
-    });
+    const quikGPTUrl =
+      chrome.extension.getURL("QuikGPT.html") +
+      "?query=" +
+      encodeURIComponent(query);
+
+    if (tab.url && tab.url.includes("QuikGPT.html")) {
+      // Current tab is the QuikGPT response page
+      chrome.tabs.update(tab.id, { url: quikGPTUrl });
+    } else {
+      // Open a new tab with the QuikGPT response page
+      chrome.tabs.create({ url: quikGPTUrl });
+    }
   }
 });
