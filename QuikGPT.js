@@ -10,44 +10,32 @@ chrome.storage.sync.get(["apiKey", "maxTokens"], async function (data) {
   console.log("Max Token", maxToken);
 
   try {
-    // Send the query to the OpenAI API
-    const response = await fetch(
-      "https://api.openai.com/v1/engines/davinci-codex/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + apiKey,
-        },
-        body: JSON.stringify({
-          prompt: query,
-          max_tokens: maxToken, // Use the retrieved maxToken value
-        }),
-      }
-    );
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + apiKey,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: query }],
+        temperature: 0.7,
+      }),
+    });
 
     if (!response.ok) {
+      console.log(await response.text());
       throw new Error(
         "Error occurred while fetching the response. Status: " + response.status
       );
     }
 
-    const reader = response.body.getReader();
-    let result = "";
-    let done = false;
+    const data = await response.json();
+    console.log(data);
 
-    while (!done) {
-      const { done: readerDone, value } = await reader.read();
-      done = readerDone;
-      const text = new TextDecoder().decode(value);
-      result += text;
-
-      // Update the response element with the partial response
-      document.getElementById("response").textContent = result;
-    }
-
-    // Update the response element with the final response
-    document.getElementById("response").textContent = result;
+    // Update the response element with the content of the chat completion
+    document.getElementById("response").textContent =
+      data.choices[0].message.content;
   } catch (error) {
     // Display the error message in the response element
     document.getElementById("response").textContent =

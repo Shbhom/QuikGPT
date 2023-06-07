@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "QuikGPT",
+  "Description": "ChatGPT on your right click",
   "version": "1.0",
   "permissions": ["contextMenus", "storage", "notifications", "activeTab"],
   "background": {
