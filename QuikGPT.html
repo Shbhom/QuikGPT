@@ -3,11 +3,44 @@
   <head>
     <title>QuikGPT</title>
     <link rel="stylesheet" href="QuikGPT.css" />
+    <script type="module" src=""></script>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-random-nonce-value'">
+
   </head>
   <body>
     <h1>QuikGPT</h1>
-    <div id="response"></div>
+    <div id="response">
+      <div
+        aria-label="Orange and tan hamster running in a metal wheel"
+        role="img"
+        class="wheel-and-hamster"
+        align="center"
+      >
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
+      </div>
+    </div>
 
+    <script type="module" nonce="random-nonce-value">
+      import autoAnimate from "https://cdnjs.cloudflare.com/ajax/libs/auto-animate/1.0.0-pre-alpha.3/index.mjs";
+      console.log({autoAnimate})
+      const response = document.getElementById("response");
+      autoAnimate(response);
+    </script>
     <script src="QuikGPT.js"></script>
   </body>
 </html>

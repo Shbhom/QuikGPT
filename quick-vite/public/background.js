@@ -17,7 +17,7 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "searchWithGPT") {
     const query = info.selectionText;
     const quikGPTUrl =
-      chrome.extension.getURL("QuikGPT.html") +
+      chrome.extension.getURL("index.html") +
       "?query=" +
       encodeURIComponent(query);
 
