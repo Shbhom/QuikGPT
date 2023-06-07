@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="config.css" />
+    <title>Extension Config</title>
+  </head>
+  <body>
+    <h1 class="extName" align="center">QuikGPT</h1>
+    <h1>Extension Configuration</h1>
+
+    <div class="form-group">
+      <label for="apiKeyInput">API Key:</label>
+      <input type="text" id="apiKeyInput" placeholder="Enter your API key" />
+    </div>
+
+    <div class="form-group">
+      <label for="maxTokensInput">Max Tokens:</label>
+      <input
+        type="text"
+        id="maxTokensInput"
+        placeholder="Enter the maximum number of tokens"
+      />
+    </div>
+
+    <button id="saveButton">Save</button>
+
+    <div id="notification"></div>
+
+    <script src="config.js"></script>
+  </body>
+</html>
